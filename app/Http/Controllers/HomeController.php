@@ -30,7 +30,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-
         $data = PengalamanKerja::count();
         return view('index', compact('data'));
     }

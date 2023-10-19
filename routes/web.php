@@ -39,5 +39,3 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.'], 
 
     Route::delete('/delete/{id}', [HomeController::class, 'delete'])->name('delete');
 });
-Route::get('/user', [MyControll::class, 'index']); //menggunakan localhost
-Route::resource('/user', MyControll::class); //untuk mengambil resource yang ada 

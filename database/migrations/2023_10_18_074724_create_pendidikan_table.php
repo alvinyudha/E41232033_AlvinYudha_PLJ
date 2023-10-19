@@ -12,7 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pendidikan', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('nama');
+            $table->string('tingkatan');
+            $table->year('tahun_masuk');
+            $table->year('tahun_keluar');
             $table->timestamps();
         });
     }

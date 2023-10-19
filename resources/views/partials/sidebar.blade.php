@@ -9,17 +9,20 @@
                  <span>Dashboard</span>
              </a>
          </li>
-     <ul class="sidebar-nav" id="sidebar-nav">
 
          <li class="nav-item">
-             <a class="nav-link " href="{{route('admin.data')}}">
-                 <i class="bi bi-person-badge-fill"></i>
-                 <span>Data Riwayat</span>
-             </a>
-         </li>
-         <!-- End Dashboard Nav -->
-     </ul>
-     <ul class="sidebar-nav" id="sidebar-nav">
+             <a class="nav-link collapsed" data-bs-target="#data-nav" data-bs-toggle="collapse" href="#">
+                 <i class="bi bi-menu-button-wide"></i><span>Data</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+                <ul id="data-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a class="nav-link" href="{{route('admin.data')}}">
+                            <i class="bi bi-circle-fill"></i>
+                            <span>Data Pengalaman Kerja</span>
+                        </a>
+                    </li>
+               </ul>
+        </li>
 
          <li class="nav-item">
              <a class="nav-link " href="{{route('logout')}}">
