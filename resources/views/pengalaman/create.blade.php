@@ -3,11 +3,12 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-        <h1>Tambah Data</h1>
+        <h1>Tambah Pengalaman</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item active">Tambah Data</li>
+                <li class="breadcrumb-item"><a href="{{route('admin.home')}}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{route('admin.pengalaman')}}">Pengalaman Kerja</a></li>
+                <li class="breadcrumb-item active">Tambah Pengalaman</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -61,9 +62,9 @@
                        
           
                           <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label">Submit Button</label>
+                            <label class="col-sm-2 col-form-label"></label>
                             <div class="col-sm-10">
-                              <button type="submit" class="btn btn-primary">Submit Form</button>
+                              <button type="submit" class="btn btn-primary">Tambah</button>
                             </div>
                           </div>
           

@@ -16,9 +16,17 @@
             </a>
                 <ul id="data-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <a class="nav-link" href="{{route('admin.data')}}">
+                        <a class="nav-link" href="{{route('admin.pengalaman')}}">
                             <i class="bi bi-circle-fill"></i>
-                            <span>Data Pengalaman Kerja</span>
+                            <span>Pengalaman Kerja</span>
+                        </a>
+                    </li>
+               </ul>
+                <ul id="data-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a class="nav-link" href="{{route('admin.pendidikan')}}">
+                            <i class="bi bi-circle-fill"></i>
+                            <span>Pendidikan</span>
                         </a>
                     </li>
                </ul>

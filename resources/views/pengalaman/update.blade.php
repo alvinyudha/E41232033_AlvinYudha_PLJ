@@ -19,8 +19,7 @@
             <div class="row">
                 <div class="col-lg-9">
                     <div class="card">
-                      <div class="card-body mt-5">
-                       
+                      <div class="card-body mt-5">                      
                         <!-- General Form Elements -->
                         <form>
                           <div class="row mb-3">

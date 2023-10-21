@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pendidikan;
 use App\Models\PengalamanKerja;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -34,15 +35,26 @@ class HomeController extends Controller
         return view('index', compact('data'));
     }
 
-    public function datauser()
+    public function search(Request $request)
     {
-        $data = PengalamanKerja::get(); //mengambil database pada tabel Pengalaman_Kerja
-        return view('datauser', compact('data')); //menampilkan data yang diambil pada tampilan view datauser
+        $data = new PengalamanKerja; //mengambil database pada tabel Pengalaman_Kerja
+        $data = new Pendidikan; //mengambil database pada tabel Pengalaman_Kerja
+        if ($request->get('search')) {
+            $data->$data->where('nama', 'LIKE', '%' . $request->get('search') . '%');
+        }
+        $data = $data->get();
+        return view('partials.main', compact('data', 'request')); //menampilkan data yang diambil pada tampilan view datause
+    }
+
+    public function dataPengalaman(Request $request)
+    {
+        $data = PengalamanKerja::get();
+        return view('pengalaman.datauser', compact('data',)); //menampilkan data yang diambil pada tampilan view datauser
     }
 
     public function create()
     {
-        return view('create');
+        return view('pengalaman.create');
     }
 
     public function store(Request $request)
@@ -66,13 +78,13 @@ class HomeController extends Controller
         ];
 
         PengalamanKerja::create($data);
-        return redirect()->route('admin.data');
+        return redirect()->route('admin.pengalaman');
     }
 
     public function update(Request $request, $id)
     {
         $data = PengalamanKerja::find($id);
-        return view('update', compact('data'));
+        return view('pengalaman.update', compact('data'));
     }
 
     public function save(Request $request, $id)
@@ -96,15 +108,15 @@ class HomeController extends Controller
         ];
 
         PengalamanKerja::whereId($id)->update($data);
-        return redirect()->route('admin.data');
+        return redirect()->route('admin.pengalaman');
     }
 
-    public function delete(Request $request, $id)
+    public function delete($id)
     {
         $data = PengalamanKerja::find($id);
         if ($data) {
             $data->delete();
         }
-        return redirect()->route('admin.data');
+        return redirect()->route('admin.pengalaman');
     }
 }

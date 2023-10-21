@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MyControll;
+use App\Http\Controllers\PendidikanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,7 +30,10 @@ Route::post('/register-proses', [RegisterController::class, 'register_proses'])-
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.'], function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::get('/data', [HomeController::class, 'datauser'])->name('data');
+    Route::get('/search', [HomeController::class, 'search'])->name('search');
+
+    //pengalaman kerja
+    Route::get('/pengalaman', [HomeController::class, 'dataPengalaman'])->name('pengalaman');
 
     Route::get('/create', [HomeController::class, 'create'])->name('create');
     Route::post('/store', [HomeController::class, 'store'])->name('store');
@@ -38,4 +42,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.'], 
     Route::put('/save/{id}', [HomeController::class, 'save'])->name('save');
 
     Route::delete('/delete/{id}', [HomeController::class, 'delete'])->name('delete');
+
+
+    //pendidikan
+    Route::get('/pendidikan', [PendidikanController::class, 'dataPendidikan'])->name('pendidikan');
+
+    Route::get('/createpend', [PendidikanController::class, 'create'])->name('createpend');
+    Route::post('/store', [PendidikanController::class, 'store'])->name('store');
+
+    Route::get('/update/{id}', [PendidikanController::class, 'update'])->name('update');
+    Route::put('/save/{id}', [PendidikanController::class, 'save'])->name('save');
+
+    Route::delete('/delete/{id}', [PendidikanController::class, 'delete'])->name('delete');
 });
