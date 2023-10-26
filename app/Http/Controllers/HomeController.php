@@ -49,7 +49,7 @@ class HomeController extends Controller
     public function dataPengalaman(Request $request)
     {
         $data = PengalamanKerja::get();
-        return view('pengalaman.datauser', compact('data',)); //menampilkan data yang diambil pada tampilan view datauser
+        return view('pengalaman.datapengalaman', compact('data',)); //menampilkan data yang diambil pada tampilan view datauser
     }
 
     public function create()

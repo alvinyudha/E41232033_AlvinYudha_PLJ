@@ -61,7 +61,7 @@
                                     <td>{{$d->tahun_masuk}} </td>
                                     <td>{{$d->tahun_keluar}} </td>
                                     <td>
-                                        <a href="{{route('admin.update',['id'=>$d->id])}}" class="btn btn-success"><i class="fas bi-pencil-square"> Edit</i></a>
+                                        <a href="{{route('admin.updatepend',['id'=>$d->id])}}" class="btn btn-success"><i class="fas bi-pencil-square"> Edit</i></a>
                                         <a data-bs-toggle="modal" data-bs-target="#modal-hapus{{$d->id}}" class="btn btn-danger"><i class="fas bi-trash-fill"> Hapus</i></a>
                                     </td>
                                     
@@ -79,7 +79,7 @@
                                           Yakin untuk menghapus??
                                         </div>
                                         <div class="modal-footer">
-                                            <form action="{{route('admin.delete',['id'=>$d->id])}}" method="POST">
+                                            <form action="{{route('admin.deletepend',['id'=>$d->id])}}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Tidak</button>

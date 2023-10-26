@@ -95,7 +95,7 @@
   
                       <div class="col-12">
                         <label for="yourPassword" class="form-label">Password</label>
-                        <input type="password" name="password" class="form-control"value="{{old('password')}}">
+                        <input type="password" name="password" class="form-control">
                         @error('password')
                         <small>{{$message}} </small>
                          @enderror

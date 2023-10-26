@@ -6,15 +6,15 @@
         <h1>Edit Data</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('admin.home')}}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{route('admin.pengalaman')}}">Pengalaman Kerja</a></li>
+                <li li class="breadcrumb-item"><a href="{{route('admin.home')}}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{route('admin.pendidikan')}}">Pendidikan</a></li>
                 <li class="breadcrumb-item active">Edit Data</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
 
     <section class="section">
-        <form action="{{route('admin.save',['id'=> $data->id])}}" method="POST">
+        <form action="{{route('admin.savepend',['id'=> $data->id])}}" method="POST">
             @csrf
             @method('PUT')
             <div class="row">
@@ -35,7 +35,16 @@
                           <div class="row mb-3">
                             <label for="inputJabatan" class="col-sm-2 col-form-label">Jabatan</label>
                             <div class="col-sm-10">
-                              <input type="text" name="jabatan"value="{{$data->jabatan}}" class="form-control">
+                              <select class="form-control" name="tingkatan" id="tingkatan">
+                                <option value="1{{(isset ($d) && $data->tingkatan == 1) ? 'selected' : ''}}">TK</option>
+                                <option value="2">SD</option>
+                                <option value="3">SMP</option>
+                                <option value="4">SMA/SMK</option>
+                                <option value="5">D3</option>
+                                <option value="6">D4/S1</option>
+                                <option value="7">S2</option>
+                                <option value="8">S3</option>
+                              </select>
                               @error('jabatan')
                               <small>{{$message}} </small>
                             @enderror

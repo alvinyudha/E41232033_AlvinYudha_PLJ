@@ -14,7 +14,7 @@
     </div><!-- End Page Title -->
 
     <section class="section">
-        <form action="{{route('admin.store')}}" method="POST">
+        <form action="{{route('admin.storepend')}}" method="POST">
             @csrf
             <div class="row">
                 <div class="col-lg-9">

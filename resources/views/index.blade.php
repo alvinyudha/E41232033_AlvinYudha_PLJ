@@ -11,7 +11,7 @@
               <div class="col-xxl-4 col-md-6">
                 <div class="card info-card sales-card">  
                   <div class="card-body">
-                    <h5 class="card-title">Jumlah Data</h5>
+                    <h5 class="card-title">Jumlah Pengalaman</h5>
                     <div class="d-flex align-items-center">
                       <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                         <i class="bi bi-people"></i>
@@ -20,10 +20,24 @@
                         <h6>{{ number_format($data) }}</h6>
                         </div>
                     </div>
-                  </div>
-  
+                  </div>  
                 </div>
               </div><!-- End Sales Card -->
+              {{-- <div class="col-xxl-4 col-md-6">
+                <div class="card info-card sales-card">  
+                  <div class="card-body">
+                    <h5 class="card-title">Jumlah Pendidikan</h5>
+                    <div class="d-flex align-items-center">
+                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="bi bi-people"></i>
+                      </div>
+                      <div class="ps-3">
+                        <h6>{{ number_format($data) }}</h6>
+                        </div>
+                    </div>
+                  </div>  
+                </div>
+              </div> --}}
   
               <!-- Revenue Card -->
               <div class="col-xxl-4 col-md-6">

@@ -23,6 +23,7 @@ class LoginController extends Controller
     */
     public function index()
     {
+        // abort(500);
         return view('auth.login');
     }
 

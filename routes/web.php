@@ -48,10 +48,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.'], 
     Route::get('/pendidikan', [PendidikanController::class, 'dataPendidikan'])->name('pendidikan');
 
     Route::get('/createpend', [PendidikanController::class, 'create'])->name('createpend');
-    Route::post('/store', [PendidikanController::class, 'store'])->name('store');
+    Route::post('/storepend', [PendidikanController::class, 'store'])->name('storepend');
 
-    Route::get('/update/{id}', [PendidikanController::class, 'update'])->name('update');
-    Route::put('/save/{id}', [PendidikanController::class, 'save'])->name('save');
+    Route::get('/updatepend/{id}', [PendidikanController::class, 'updatePend'])->name('updatepend');
+    Route::put('/savepend/{id}', [PendidikanController::class, 'savePend'])->name('savepend');
 
-    Route::delete('/delete/{id}', [PendidikanController::class, 'delete'])->name('delete');
+    Route::delete('/deletepend/{id}', [PendidikanController::class, 'delete'])->name('deletepend');
 });

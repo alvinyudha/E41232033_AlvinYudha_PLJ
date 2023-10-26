@@ -49,13 +49,24 @@ class PendidikanController extends Controller
         return redirect()->route('admin.pendidikan');
     }
 
-    public function update(Request $request, $id)
+    // public function savePend(Request $request, Pendidikan $pendidikan)
+    // {
+    //     $pendidikan->update($request->all());
+    //     return redirect()->route('admin.pendidikan');
+    // }
+
+    // public function updatePend(Pendidikan $pendidikan)
+    // {
+    //     return view('pendidikan.updatePend', compact('pendidikan'));
+    // }
+
+    public function updatePend(Request $request, $id)
     {
         $data = Pendidikan::find($id);
-        return view('update', compact('data'));
+        return view('pendidikan.updatePend', compact('data'));
     }
 
-    public function save(Request $request, $id)
+    public function savePend(Request $request, $id)
     {
         $validator = Validator::make(
             $request->all(),
@@ -70,7 +81,7 @@ class PendidikanController extends Controller
 
         $data = [
             'nama' => $request->nama,
-            'tingkatan' => $request->jabatan,
+            'tingkatan' => $request->tingkatan,
             'tahun_masuk' => $request->tahun_masuk,
             'tahun_keluar' => $request->tahun_keluar
         ];
