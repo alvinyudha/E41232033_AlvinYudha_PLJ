@@ -10,7 +10,7 @@
              </a>
          </li>
          <li class="nav-item">
-             <a class="nav-link " href="{{ route('cuti.create.user') }}">
+             <a class="nav-link " href="{{ route('cuti.create') }}">
                  <i class="bi bi-grid"></i>
                  <span>Cuti</span>
              </a>
