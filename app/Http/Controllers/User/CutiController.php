@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cuti;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class CutiController extends Controller
@@ -27,7 +28,18 @@ class CutiController extends Controller
             'tanggal_selesai' => 'required|date|after_or_equal:tanggal_mulai',
             'alasan' => 'required'
         ]);
+        // Hitung selisih hari antara tanggal_mulai dan tanggal_selesai
+        $tanggalMulai = Carbon::parse($request->tanggal_mulai);
+        $tanggalSelesai = Carbon::parse($request->tanggal_selesai);
+        $selisihHari = $tanggalMulai->diffInDays($tanggalSelesai) + 1; // tambahkan 1 hari untuk inklusif hari terakhir
 
+        // Batasan hari cuti (misalnya 14 hari)
+        $batasanHariCuti = 14;
+
+        // Cek apakah jumlah hari cuti melebihi batasan
+        if ($selisihHari > $batasanHariCuti) {
+            return redirect()->back()->with('failed', 'Jumlah hari cuti melebihi batasan yang diperbolehkan.');
+        }
         // Simpan data pengajuan cuti ke dalam database
         $cuti = new Cuti();
         $cuti->nama = $request->nama;
