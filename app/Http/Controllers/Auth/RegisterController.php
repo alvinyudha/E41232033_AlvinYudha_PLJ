@@ -39,19 +39,11 @@ class RegisterController extends Controller
             'name' => $request->name,
             'username' => $request->username,
             'email' => $request->email,
+            'role' => 'User',
             'password' => Hash::make($request->password)
         ];
         User::create($data);
 
-        $loginType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
-        $login = [
-            $loginType => $request->username,
-            'password' => $request->password
-        ];
-        if (Auth::attempt($login)) {
-            return redirect()->route('login')->with('success', 'Selamat anda berhasil register');
-        } else {
-            return redirect()->route('register');
-        }
+        return redirect()->route('login')->with('success', 'Selamat anda berhasil register');
     }
 }

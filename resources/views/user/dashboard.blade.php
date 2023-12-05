@@ -1,4 +1,4 @@
-@extends ('partials.main')
+@extends ('user.partials.main')
 @section('content')
     <main id="main" class="main">
         <section class="section dashboard">
@@ -18,7 +18,7 @@
                                             <i class="bi bi-people"></i>
                                         </div>
                                         <div class="ps-3">
-                                            <h6></h6>
+                                            <h6>{{ number_format($data) }}</h6>
                                         </div>
                                     </div>
                                 </div>

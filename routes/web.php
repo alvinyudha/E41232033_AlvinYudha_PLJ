@@ -5,6 +5,8 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MyControll;
 use App\Http\Controllers\PendidikanController;
+use App\Http\Controllers\User\CutiController;
+use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,8 +30,10 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register-proses', [RegisterController::class, 'register_proses'])->name('register-proses');
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.'], function () {
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
+// Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.'], function () {
+Route::middleware(['cekLogin', 'cekRole:Admin'])->group(function () {
+
+    Route::get('admin', [HomeController::class, 'index'])->name('home');
     Route::get('/search', [HomeController::class, 'search'])->name('search');
 
     //pengalaman kerja
@@ -54,4 +58,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.'], 
     Route::put('/savepend/{id}', [PendidikanController::class, 'savePend'])->name('savepend');
 
     Route::delete('/deletepend/{id}', [PendidikanController::class, 'delete'])->name('deletepend');
+});
+
+
+Route::middleware(['cekLogin', 'cekRole:User'])->group(function () {
+    Route::get('user', [UserController::class, 'index'])->name('home.user');
+    Route::get('pengajuan-cuti', [CutiController::class, 'create'])->name('cuti.create');
+    Route::post('pengajuan-cuti', [CutiController::class, 'store'])->name('cuti.store');
 });

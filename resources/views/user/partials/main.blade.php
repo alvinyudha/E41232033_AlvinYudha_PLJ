@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Data Karyawan</title>
+    <title>Cuti</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -48,7 +48,7 @@
         <div class="d-flex align-items-center justify-content-between">
             <a href="{{ route('home') }}" class="logo d-flex align-items-center">
                 <img src="{{ asset('nice/assets/img/nahida.png') }}" alt="">
-                <span class="d-none d-lg-block">NiceAdmin</span>
+                <span class="d-none d-lg-block">CutiApps</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
@@ -272,7 +272,7 @@
 
     </header><!-- End Header -->
 
-    @include('partials.sidebar')
+    @include('user.partials.sidebar')
 
     @yield('content')
 

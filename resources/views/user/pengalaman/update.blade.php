@@ -1,4 +1,4 @@
-@extends ('partials.main')
+@extends ('user.partials.main')
 @section('content')
     <main id="main" class="main">
 
@@ -6,15 +6,15 @@
             <h1>Edit Data</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('pendidikan') }}">Pendidikan</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('pengalaman') }}">Pengalaman Kerja</a></li>
                     <li class="breadcrumb-item active">Edit Data</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
 
         <section class="section">
-            <form action="{{ route('savepend', ['id' => $data->id]) }}" method="POST">
+            <form action="{{ route('save', ['id' => $data->id]) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="row">
@@ -36,18 +36,8 @@
                                     <div class="row mb-3">
                                         <label for="inputJabatan" class="col-sm-2 col-form-label">Jabatan</label>
                                         <div class="col-sm-10">
-                                            <select class="form-control" name="tingkatan" id="tingkatan">
-                                                <option value="{{ $data->tingkatan }}">{{ $data->tingkatan }}</option>
-                                                <option value>Pilih Jurusan</option>
-                                                <option value="1">TK</option>
-                                                <option value="2">SD</option>
-                                                <option value="3">SMP</option>
-                                                <option value="4">SMA/SMK</option>
-                                                <option value="5">D3</option>
-                                                <option value="6">D4/S1</option>
-                                                <option value="7">S2</option>
-                                                <option value="8">S3</option>
-                                            </select>
+                                            <input type="text" name="jabatan"value="{{ $data->jabatan }}"
+                                                class="form-control">
                                             @error('jabatan')
                                                 <small>{{ $message }} </small>
                                             @enderror

@@ -9,30 +9,15 @@ use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    // public function dashboard()
-    // {
-    //     return view('dashboard');
-    // }
+    public function __construct()
+    {
+        $this->middleware('cekRole:Admin');
+    }
 
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index()
     {
-        $data = PengalamanKerja::count();
-        return view('index', compact('data'));
+        return view('index');
     }
 
     public function search(Request $request)
@@ -78,7 +63,7 @@ class HomeController extends Controller
         ];
 
         PengalamanKerja::create($data);
-        return redirect()->route('admin.pengalaman');
+        return redirect()->route('pengalaman');
     }
 
     public function update(Request $request, $id)
@@ -108,7 +93,7 @@ class HomeController extends Controller
         ];
 
         PengalamanKerja::whereId($id)->update($data);
-        return redirect()->route('admin.pengalaman');
+        return redirect()->route('pengalaman');
     }
 
     public function delete($id)
@@ -117,6 +102,6 @@ class HomeController extends Controller
         if ($data) {
             $data->delete();
         }
-        return redirect()->route('admin.pengalaman');
+        return redirect()->route('pengalaman');
     }
 }
