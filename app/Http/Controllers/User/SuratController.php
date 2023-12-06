@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Surat;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class SuratController extends Controller
@@ -28,7 +29,18 @@ class SuratController extends Controller
             'tanggal_selesai' => 'required|date|after_or_equal:tanggal_mulai',
             'alasan' => 'required'
         ]);
+        // Hitung selisih hari antara tanggal_mulai dan tanggal_selesai
+        $tanggalMulai = Carbon::parse($request->tanggal_mulai);
+        $tanggalSelesai = Carbon::parse($request->tanggal_selesai);
+        $selisihHari = $tanggalMulai->diffInDays($tanggalSelesai) + 1; // tambahkan 1 hari untuk inklusif hari terakhir
 
+        // Batasan hari cuti (misalnya 14 hari)
+        $batasanHariIzin = 14;
+
+        // Cek apakah jumlah hari cuti melebihi batasan
+        if ($selisihHari > $batasanHariIzin) {
+            return redirect()->back()->with('failed', 'Jumlah hari izin melebihi batasan yang diperbolehkan.');
+        }
         // Simpan data pengajuan surat ke dalam database
         $surat = new Surat();
         $surat->nama = $request->nama;

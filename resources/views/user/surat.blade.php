@@ -20,11 +20,11 @@
                             <!-- General Form Elements -->
                             <form method="POST" action="{{ route('surat.store') }}">
                                 @csrf
-                            @if(session('success'))
-                                <div class="alert alert-success">
-                                {{ session('success') }}
-                                </div>
-                            @endif
+                                @if (session('success'))
+                                    <div class="alert alert-success">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
                                 <div class="row mb-3">
                                     <label for="nama" class="col-sm-2 col-form-label">Nama:</label>
                                     <div class="col-sm-10">
@@ -35,6 +35,7 @@
                                     <label for="jenis_surat" class="col-sm-2 col-form-label">Jenis Surat:</label>
                                     <div class="col-sm-10">
                                         <select class="form-control" name="jenis_surat" id="jenis_surat" required>
+                                            <option value="">Pilih Jenis Surat</option>
                                             <option value="izin_menikah">Izin Menikah</option>
                                             <option value="izin_melahirkan">Izin Melahirkan</option>
                                             <option value="izin_tidak_masuk">Izin Tidak Masuk</option>
@@ -69,7 +70,7 @@
                                     </div>
                                 </div>
                             </form>
-               
+
                         </div>
                     </div>
 

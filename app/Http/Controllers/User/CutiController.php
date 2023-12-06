@@ -51,4 +51,20 @@ class CutiController extends Controller
         // Redirect ke halaman sukses atau error
         return redirect()->back()->with('success', 'Pengajuan cuti berhasil diajukan.');
     }
+    public function konfirmasiForm(Cuti $cuti)
+    {
+        return view('admin.konfirmasi', compact('cuti'));
+    }
+
+    public function konfirmasi(Request $request, Cuti $cuti)
+    {
+        $request->validate([
+            'status' => 'required|boolean'
+        ]);
+
+        $cuti->status = $request->status;
+        $cuti->save();
+
+        return redirect()->route('cuti.index')->with('success', 'Konfirmasi cuti berhasil.');
+    }
 }
