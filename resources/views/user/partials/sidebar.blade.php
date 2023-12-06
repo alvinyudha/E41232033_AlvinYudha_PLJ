@@ -22,6 +22,12 @@
              </a>
          </li>
          <li class="nav-item">
+            <a class="nav-link" href="{{ route('riwayat.index') }}">
+                <i class="bi bi-grid"></i>
+                <span>Riwayat</span>
+            </a>
+        </li>    
+         <li class="nav-item">
              <a class="nav-link " href="{{ route('logout') }}">
                  <i class="bi bi-box-arrow-in-right"></i>
                  <span>Logout</span>
