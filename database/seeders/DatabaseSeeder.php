@@ -18,5 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             CutiSeeder::class,
         ]);
+        $this->call([
+            SuratsSeeder::class,
+        ]);
     }
 }

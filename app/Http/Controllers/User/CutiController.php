@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cuti;
+use App\Models\KonfirmasiCuti;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -46,25 +47,10 @@ class CutiController extends Controller
         $cuti->tanggal_mulai = $request->tanggal_mulai;
         $cuti->tanggal_selesai = $request->tanggal_selesai;
         $cuti->alasan = $request->alasan;
+        $cuti->durasi = $selisihHari;
         $cuti->save();
 
         // Redirect ke halaman sukses atau error
         return redirect()->back()->with('success', 'Pengajuan cuti berhasil diajukan.');
-    }
-    public function konfirmasiForm(Cuti $cuti)
-    {
-        return view('admin.konfirmasi', compact('cuti'));
-    }
-
-    public function konfirmasi(Request $request, Cuti $cuti)
-    {
-        $request->validate([
-            'status' => 'required|boolean'
-        ]);
-
-        $cuti->status = $request->status;
-        $cuti->save();
-
-        return redirect()->route('cuti.index')->with('success', 'Konfirmasi cuti berhasil.');
     }
 }

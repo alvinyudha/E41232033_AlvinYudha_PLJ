@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\KonfirmasiController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
@@ -35,7 +36,9 @@ Route::post('/register-proses', [RegisterController::class, 'register_proses'])-
 Route::middleware(['cekLogin', 'cekRole:Admin'])->group(function () {
 
     Route::get('admin', [HomeController::class, 'index'])->name('home');
-    Route::get('/search', [HomeController::class, 'search'])->name('search');
+    Route::get('/cuti/{id}', [KonfirmasiController::class, 'show'])->name('cuti.show');
+    Route::post('/cuti/{id}/konfirmasi', [KonfirmasiController::class, 'konfirmasiCuti'])->name('cuti.konfirmasi');
+
 
     //pengalaman kerja
     Route::get('/pengalaman', [HomeController::class, 'dataPengalaman'])->name('pengalaman');

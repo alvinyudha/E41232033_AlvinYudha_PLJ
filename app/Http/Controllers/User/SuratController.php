@@ -48,6 +48,7 @@ class SuratController extends Controller
         $surat->tanggal_mulai = $request->tanggal_mulai;
         $surat->tanggal_selesai = $request->tanggal_selesai;
         $surat->alasan = $request->alasan;
+        $surat->durasi = $selisihHari;
         $surat->save();
 
         // Redirect ke halaman sukses atau error

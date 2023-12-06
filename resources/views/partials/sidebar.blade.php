@@ -9,6 +9,12 @@
                  <span>Dashboard</span>
              </a>
          </li>
+         <li class="nav-item">
+             <a class="nav-link " href="{{ route('cuti.show', ['id' => $cuti->id]) }}">
+                 <i class="bi bi-grid"></i>
+                 <span>Konfirmasi Cuti</span>
+             </a>
+         </li>
 
          {{-- <li class="nav-item">
              <a class="nav-link collapsed" data-bs-target="#data-nav" data-bs-toggle="collapse" href="#">

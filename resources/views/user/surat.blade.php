@@ -20,11 +20,6 @@
                             <!-- General Form Elements -->
                             <form method="POST" action="{{ route('surat.store') }}">
                                 @csrf
-                                @if (session('success'))
-                                    <div class="alert alert-success">
-                                        {{ session('success') }}
-                                    </div>
-                                @endif
                                 <div class="row mb-3">
                                     <label for="nama" class="col-sm-2 col-form-label">Nama:</label>
                                     <div class="col-sm-10">
