@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MyControll;
 use App\Http\Controllers\PendidikanController;
 use App\Http\Controllers\User\CutiController;
+use App\Http\Controllers\User\SuratController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -65,4 +66,7 @@ Route::middleware(['cekLogin', 'cekRole:User'])->group(function () {
     Route::get('user', [UserController::class, 'index'])->name('home.user');
     Route::get('pengajuan-cuti', [CutiController::class, 'create'])->name('cuti.create');
     Route::post('pengajuan-cuti', [CutiController::class, 'store'])->name('cuti.store');
+
+    Route::get('pengajuan-surat', [SuratController::class, 'create'])->name('surat.create');
+    Route::post('pengajuan-surat', [SuratController::class, 'store'])->name('surat.store');
 });

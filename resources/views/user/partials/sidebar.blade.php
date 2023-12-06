@@ -15,9 +15,12 @@
                  <span>Cuti</span>
              </a>
          </li>
-
-
-
+         <li class="nav-item">
+            <a class="nav-link " href="{{ route('surat.create') }}">
+                <i class="bi bi-grid"></i>
+                <span>Surat</span>
+            </a>
+        </li>
          <li class="nav-item">
              <a class="nav-link " href="{{ route('logout') }}">
                  <i class="bi bi-box-arrow-in-right"></i>
