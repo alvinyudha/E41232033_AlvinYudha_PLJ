@@ -13,26 +13,32 @@ class KonfirmasiController extends Controller
     {
         $this->middleware('cekRole:Admin');
     }
+    public function index()
+    {
+        $cutis = Cuti::all();
 
+        return view('admin.detailCuti', compact('cutis'));
+    }
     public function show($id)
     {
         $cuti = Cuti::findOrFail($id);
 
-        return view('admin.konfirmasi', compact('cuti'));
+        return view('admin.showCuti', compact('cuti'));
     }
 
-    public function konfirmasiCuti($id)
+    public function approve($id)
     {
         $cuti = Cuti::findOrFail($id);
+        $cuti->update(['status' => 'disetujui']);
 
+        return redirect()->route('cuti.detail')->with('success', 'Cuti berhasil disetujui!');
+    }
 
-        // Membuat konfirmasi cuti baru
-        $konfirmasiCuti = new KonfirmasiCuti();
-        $konfirmasiCuti->cuti_id = $cuti->id;
-        $konfirmasiCuti->disetujui = true;
-        $konfirmasiCuti->save();
+    public function reject($id)
+    {
+        $cuti = Cuti::findOrFail($id);
+        $cuti->update(['status' => 'ditolak']);
 
-        // Redirect ke halaman sukses
-        return redirect()->back()->with('success', 'Cuti berhasil dikonfirmasi.');
+        return redirect()->route('cuti.detail')->with('success', 'Cuti berhasil ditolak!');
     }
 }

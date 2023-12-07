@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\KonfirmasiController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -7,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MyControll;
 use App\Http\Controllers\PendidikanController;
 use App\Http\Controllers\User\CutiController;
+use App\Http\Controllers\User\RiwayatController;
 use App\Http\Controllers\User\SuratController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
@@ -35,9 +37,11 @@ Route::post('/register-proses', [RegisterController::class, 'register_proses'])-
 // Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.'], function () {
 Route::middleware(['cekLogin', 'cekRole:Admin'])->group(function () {
 
-    Route::get('admin', [HomeController::class, 'index'])->name('home');
+    Route::get('admin', [AdminController::class, 'index'])->name('home.admin');
+    Route::get('/cuti', [KonfirmasiController::class, 'index'])->name('cuti.detail');
     Route::get('/cuti/{id}', [KonfirmasiController::class, 'show'])->name('cuti.show');
-    Route::post('/cuti/{id}/konfirmasi', [KonfirmasiController::class, 'konfirmasiCuti'])->name('cuti.konfirmasi');
+    Route::put('/cuti/{id}/approve', [KonfirmasiController::class, 'approve'])->name('cuti.approve');
+    Route::put('/cuti/{id}/reject', [KonfirmasiController::class, 'reject'])->name('cuti.reject');
 
 
     //pengalaman kerja
@@ -71,4 +75,6 @@ Route::middleware(['cekLogin', 'cekRole:User'])->group(function () {
     Route::post('pengajuan-cuti', [CutiController::class, 'store'])->name('cuti.store');
     Route::get('pengajuan-surat', [SuratController::class, 'create'])->name('surat.create');
     Route::post('pengajuan-surat', [SuratController::class, 'store'])->name('surat.store');
+    Route::get('/cuti-riwayat', [RiwayatController::class, 'index'])->name('cuti.riwayat');
+    Route::get('/cuti-riwayat/{id}', [RiwayatController::class, 'cutiRiwayat'])->name('cuti.detailRiwayat');
 });

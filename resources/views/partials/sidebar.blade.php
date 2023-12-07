@@ -4,13 +4,13 @@
      <ul class="sidebar-nav" id="sidebar-nav">
 
          <li class="nav-item">
-             <a class="nav-link " href="{{ route('home') }}">
+             <a class="nav-link " href="{{ route('home.admin') }}">
                  <i class="bi bi-grid"></i>
                  <span>Dashboard</span>
              </a>
          </li>
          <li class="nav-item">
-             <a class="nav-link " href="{{ route('cuti.show', ['id' => $cuti->id]) }}">
+             <a class="nav-link " href="{{ route('cuti.detail') }}">
                  <i class="bi bi-grid"></i>
                  <span>Konfirmasi Cuti</span>
              </a>

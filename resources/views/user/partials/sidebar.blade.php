@@ -22,6 +22,12 @@
              </a>
          </li>
          <li class="nav-item">
+             <a class="nav-link " href="{{ route('cuti.riwayat') }}">
+                 <i class="bi bi-envelope-fill"></i>
+                 <span>Riwayat Cuti</span>
+             </a>
+         </li>
+         <li class="nav-item">
              <a class="nav-link " href="{{ route('logout') }}">
                  <i class="bi bi-box-arrow-in-right"></i>
                  <span>Logout</span>

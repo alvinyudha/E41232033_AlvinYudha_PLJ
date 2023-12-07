@@ -9,16 +9,16 @@ use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('cekRole:Admin');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('cekRole:Admin');
+    // }
 
 
-    public function index()
-    {
-        return view('index');
-    }
+    // public function index()
+    // {
+    //     return view('index');
+    // }
 
     public function search(Request $request)
     {
