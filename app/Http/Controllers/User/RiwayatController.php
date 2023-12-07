@@ -12,10 +12,12 @@ class RiwayatController extends Controller
     {
         $this->middleware('cekRole:User');
     }
+
     public function index()
     {
-        $cutis = Cuti::all();
-
+        $user = auth()->user();
+        // $cutis = Cuti::all();
+        $cutis = Cuti::where('user_id', $user->id)->get();
         return view('user.riwayatCuti', compact('cutis'));
     }
     public function cutiRiwayat($id)

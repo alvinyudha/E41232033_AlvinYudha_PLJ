@@ -48,6 +48,8 @@ class CutiController extends Controller
         $cuti->tanggal_selesai = $request->tanggal_selesai;
         $cuti->alasan = $request->alasan;
         $cuti->durasi = $selisihHari;
+        $cuti->status = 'pending';
+        $cuti->user_id = auth()->user()->id;
         $cuti->save();
 
         // Redirect ke halaman sukses atau error
