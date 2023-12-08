@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Cuti;
 use App\Models\KonfirmasiCuti;
+use App\Models\Surat;
 use Illuminate\Http\Request;
 
 class KonfirmasiController extends Controller
@@ -13,7 +14,9 @@ class KonfirmasiController extends Controller
     {
         $this->middleware('cekRole:Admin');
     }
-    public function index()
+
+    //cuti
+    public function cuti()
     {
         $cutis = Cuti::all();
 
@@ -40,5 +43,35 @@ class KonfirmasiController extends Controller
         $cuti->update(['status' => 'ditolak']);
 
         return redirect()->route('cuti.detail')->with('success', 'Cuti berhasil ditolak!');
+    }
+
+    //surat izin 
+    public function surat()
+    {
+        $surat = Surat::all();
+
+        return view('admin.detailSurat', compact('surat'));
+    }
+    public function showSrt($id)
+    {
+        $surat = Surat::findOrFail($id);
+
+        return view('admin.showSurat', compact('surat'));
+    }
+
+    public function approveSrt($id)
+    {
+        $surat = Surat::findOrFail($id);
+        $surat->update(['status' => 'disetujui']);
+
+        return redirect()->route('surat.detail')->with('success', 'Surat Izin berhasil disetujui!');
+    }
+
+    public function rejectSrt($id)
+    {
+        $surat = Surat::findOrFail($id);
+        $surat->update(['status' => 'ditolak']);
+
+        return redirect()->route('surat.detail')->with('success', 'Surat Izin berhasil ditolak!');
     }
 }

@@ -38,34 +38,39 @@ Route::post('/register-proses', [RegisterController::class, 'register_proses'])-
 Route::middleware(['cekLogin', 'cekRole:Admin'])->group(function () {
 
     Route::get('admin', [AdminController::class, 'index'])->name('home.admin');
-    Route::get('/cuti', [KonfirmasiController::class, 'index'])->name('cuti.detail');
+    Route::get('/cuti', [KonfirmasiController::class, 'cuti'])->name('cuti.detail');
     Route::get('/cuti/{id}', [KonfirmasiController::class, 'show'])->name('cuti.show');
     Route::put('/cuti/{id}/approve', [KonfirmasiController::class, 'approve'])->name('cuti.approve');
     Route::put('/cuti/{id}/reject', [KonfirmasiController::class, 'reject'])->name('cuti.reject');
 
+    Route::get('/surat', [KonfirmasiController::class, 'surat'])->name('surat.detail');
+    Route::get('/surat/{id}', [KonfirmasiController::class, 'showSrt'])->name('surat.show');
+    Route::put('/surat/{id}/approveSrt', [KonfirmasiController::class, 'approveSrt'])->name('surat.approve');
+    Route::put('/surat/{id}/rejectSrt', [KonfirmasiController::class, 'rejectSrt'])->name('surat.reject');
+
 
     //pengalaman kerja
-    Route::get('/pengalaman', [HomeController::class, 'dataPengalaman'])->name('pengalaman');
+    // Route::get('/pengalaman', [HomeController::class, 'dataPengalaman'])->name('pengalaman');
 
-    Route::get('/create', [HomeController::class, 'create'])->name('create');
-    Route::post('/store', [HomeController::class, 'store'])->name('store');
+    // Route::get('/create', [HomeController::class, 'create'])->name('create');
+    // Route::post('/store', [HomeController::class, 'store'])->name('store');
 
-    Route::get('/update/{id}', [HomeController::class, 'update'])->name('update');
-    Route::put('/save/{id}', [HomeController::class, 'save'])->name('save');
+    // Route::get('/update/{id}', [HomeController::class, 'update'])->name('update');
+    // Route::put('/save/{id}', [HomeController::class, 'save'])->name('save');
 
-    Route::delete('/delete/{id}', [HomeController::class, 'delete'])->name('delete');
+    // Route::delete('/delete/{id}', [HomeController::class, 'delete'])->name('delete');
 
 
-    //pendidikan
-    Route::get('/pendidikan', [PendidikanController::class, 'dataPendidikan'])->name('pendidikan');
+    // //pendidikan
+    // Route::get('/pendidikan', [PendidikanController::class, 'dataPendidikan'])->name('pendidikan');
 
-    Route::get('/createpend', [PendidikanController::class, 'create'])->name('createpend');
-    Route::post('/storepend', [PendidikanController::class, 'store'])->name('storepend');
+    // Route::get('/createpend', [PendidikanController::class, 'create'])->name('createpend');
+    // Route::post('/storepend', [PendidikanController::class, 'store'])->name('storepend');
 
-    Route::get('/updatepend/{id}', [PendidikanController::class, 'updatePend'])->name('updatepend');
-    Route::put('/savepend/{id}', [PendidikanController::class, 'savePend'])->name('savepend');
+    // Route::get('/updatepend/{id}', [PendidikanController::class, 'updatePend'])->name('updatepend');
+    // Route::put('/savepend/{id}', [PendidikanController::class, 'savePend'])->name('savepend');
 
-    Route::delete('/deletepend/{id}', [PendidikanController::class, 'delete'])->name('deletepend');
+    // Route::delete('/deletepend/{id}', [PendidikanController::class, 'delete'])->name('deletepend');
 });
 
 
@@ -75,6 +80,8 @@ Route::middleware(['cekLogin', 'cekRole:User'])->group(function () {
     Route::post('pengajuan-cuti', [CutiController::class, 'store'])->name('cuti.store');
     Route::get('pengajuan-surat', [SuratController::class, 'create'])->name('surat.create');
     Route::post('pengajuan-surat', [SuratController::class, 'store'])->name('surat.store');
-    Route::get('/cuti-riwayat', [RiwayatController::class, 'index'])->name('cuti.riwayat');
+    Route::get('/cuti-riwayat', [RiwayatController::class, 'cuti'])->name('cuti.riwayat');
     Route::get('/cuti-riwayat/{id}', [RiwayatController::class, 'cutiRiwayat'])->name('cuti.detailRiwayat');
+    Route::get('/surat-riwayat', [RiwayatController::class, 'surat'])->name('surat.riwayat');
+    Route::get('/surat-riwayat/{id}', [RiwayatController::class, 'suratRiwayat'])->name('surat.detailRiwayat');
 });

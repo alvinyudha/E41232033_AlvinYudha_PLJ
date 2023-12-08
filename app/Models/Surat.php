@@ -9,5 +9,10 @@ class Surat extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nama', 'jenis_surat', 'tanggal_mulai', 'tanggal_selesai', 'alasan', 'durasi'];
+    protected $fillable = ['nama', 'jenis_surat', 'tanggal_mulai', 'tanggal_selesai', 'alasan', 'durasi', 'status'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

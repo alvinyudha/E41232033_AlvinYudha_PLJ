@@ -23,8 +23,14 @@
          </li>
          <li class="nav-item">
              <a class="nav-link " href="{{ route('cuti.riwayat') }}">
-                 <i class="bi bi-envelope-fill"></i>
+                 <i class="bi bi-calendar2-event-fill"></i>
                  <span>Riwayat Cuti</span>
+             </a>
+         </li>
+         <li class="nav-item">
+             <a class="nav-link " href="{{ route('surat.riwayat') }}">
+                 <i class="bi bi-envelope-fill"></i>
+                 <span>Riwayat Surat Izin</span>
              </a>
          </li>
          <li class="nav-item">

@@ -15,6 +15,12 @@
                  <span>Konfirmasi Cuti</span>
              </a>
          </li>
+         <li class="nav-item">
+             <a class="nav-link " href="{{ route('surat.detail') }}">
+                 <i class="bi bi-grid"></i>
+                 <span>Konfirmasi Surat Izin</span>
+             </a>
+         </li>
 
          {{-- <li class="nav-item">
              <a class="nav-link collapsed" data-bs-target="#data-nav" data-bs-toggle="collapse" href="#">
