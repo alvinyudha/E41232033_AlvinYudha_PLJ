@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\API\AuthAPIController;
+use App\Http\Controllers\API\CutiAPI;
+use App\Http\Controllers\API\CutiAPIController;
 use App\Http\Controllers\APIController;
 use App\Http\Controllers\Backend\ApiPendidikanController;
 use Illuminate\Http\Request;
@@ -16,8 +19,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/auth/register', [APIControllerroller::class, 'register']);
-Route::post('/auth/login', [APIController::class, 'login']);
+Route::post('auth/register', [AuthAPIController::class, 'register']);
+Route::post('auth/login', [AuthAPIController::class, 'login']);
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::post('cuti', [CutiAPIController::class, 'store']);
+    Route::get('cuti/show', [CutiAPIController::class, 'show']);
+});
+
 
 
 // Route::group(['namespace' => 'Backend'], function () {
