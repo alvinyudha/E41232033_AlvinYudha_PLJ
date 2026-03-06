@@ -50,9 +50,7 @@
                                                         data-bs-target="#modal-hapus{{ $d->id }}"
                                                         class="btn btn-danger"><i class="fas bi-trash-fill"> Hapus</i></a>
                                                 </td>
-
                                             </tr>
-
                                             {{-- MODAL --}}
                                             <div class="modal fade" id="modal-hapus{{ $d->id }}" tabindex="-1">
                                                 <div class="modal-dialog">
