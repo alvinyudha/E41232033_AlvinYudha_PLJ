@@ -55,14 +55,14 @@ Route::middleware(['cekLogin', 'cekRole:Admin'])->group(function () {
     // Route::get('/create', [HomeController::class, 'create'])->name('create');
     // Route::post('/store', [HomeController::class, 'store'])->name('store');
 
-    // Route::get('/update/{id}', [HomeController::class, 'update'])->name('update');
-    // Route::put('/save/{id}', [HomeController::class, 'save'])->name('save');
+    Route::get('/update/{id}', [HomeController::class, 'update'])->name('update');
+    Route::put('/save/{id}', [HomeController::class, 'save'])->name('save');
 
-    // Route::delete('/delete/{id}', [HomeController::class, 'delete'])->name('delete');
+    Route::delete('/delete/{id}', [HomeController::class, 'delete'])->name('delete');
 
 
     // //pendidikan
-    // Route::get('/pendidikan', [PendidikanController::class, 'dataPendidikan'])->name('pendidikan');
+    Route::get('/pendidikan', [PendidikanController::class, 'dataPendidikan'])->name('pendidikan');
 
     // Route::get('/createpend', [PendidikanController::class, 'create'])->name('createpend');
     // Route::post('/storepend', [PendidikanController::class, 'store'])->name('storepend');
